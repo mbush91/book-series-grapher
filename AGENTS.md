@@ -23,7 +23,7 @@ Build a spoiler-safe book-series knowledge system that ingests books chapter-by-
 
 ## Current progress
 - [x] Architecture direction established.
-- [ ] RED: contract/domain/API/MCP tests.
+- [x] RED: domain, parser, settings, API, and spoiler-cutoff tests added before implementation.
 - [ ] GREEN: implementation.
 - [ ] Docker Compose wiring.
 - [ ] Documentation and example environment.
@@ -34,3 +34,11 @@ Build a spoiler-safe book-series knowledge system that ingests books chapter-by-
 - Expose MCP tools for story-position-aware character status, interaction timelines, relationship/knowledge lookup, and text search.
 - Provide FastAPI endpoints for health, upload/process, processing status, and questions.
 - Keep file-format parsing extensible for EPUB/PDF later.
+
+## Test contracts now driving implementation
+- Interactions must have at least two participants.
+- Extraction references must resolve to characters declared in the same chapter analysis.
+- Chapter parsing recognizes Markdown/plain Chapter, Prologue, and Epilogue headings.
+- Model effort is represented with Pydantic AI's provider-portable `thinking` setting.
+- Upload endpoints accept only the currently supported text formats.
+- Every temporal character lookup takes an explicit `through_sequence` cutoff.
